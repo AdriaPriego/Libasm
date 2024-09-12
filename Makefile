@@ -17,7 +17,7 @@ dir:
 	mkdir -p ${TMP}
 
 main: all
-	gcc -no-pie -m64 ${NAME} main.c -L. -lasm -o compile
+	gcc -m64 ${NAME} main.c -L. -lasm -o compile
 
 $(TMP)%.o: %.asm
 	@printf "$(CL_LINE)$(YELLOW)Compiling... $(END)$(patsubst $(TMP)%,%,$@)\n"
