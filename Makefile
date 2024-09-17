@@ -4,8 +4,7 @@ NAME = libasm.a
 CC = nasm -f elf64
 LIB = ar rcs
 
-SRC = ft_strlen.asm ft_strcmp.asm ft_write.asm
-#ft_strcpy.asm ft_write.asm ft_read.asm ft_strdup.asm
+SRC = ft_strlen.asm ft_strcmp.asm ft_write.asm ft_read.asm ft_strcpy.asm ft_strdup.asm
 OBJ = $(addprefix $(TMP),$(SRC:.asm=.o))
 
 TMP = .tmp/
@@ -17,11 +16,11 @@ dir:
 	mkdir -p ${TMP}
 
 main: all
-	gcc -m64 ${NAME} main.c -L. -lasm -o compile
+	gcc -shared -m64 -o compile ${NAME} main.c -L. -lasm  
 
 $(TMP)%.o: %.asm
-	@printf "$(CL_LINE)$(YELLOW)Compiling... $(END)$(patsubst $(TMP)%,%,$@)\n"
 	$(CC) $< -o $@
+# @printf "$(CL_LINE)$(YELLOW)Compiling... $(END)$(patsubst $(TMP)%,%,$@)\n"
 
 clean:
 	rm -rf ${TMP}
