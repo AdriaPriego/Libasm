@@ -4,8 +4,8 @@ NAME = libasm.a
 CC = nasm -f elf64
 LIB = ar rcs
 
-SRC = ft_strlen.asm ft_strcmp.asm ft_write.asm ft_read.asm ft_strcpy.asm ft_strdup.asm
-OBJ = $(addprefix $(TMP),$(SRC:.asm=.o))
+SRC = ft_strlen.s ft_strcmp.s ft_write.s ft_read.s ft_strcpy.s ft_strdup.s
+OBJ = $(addprefix $(TMP),$(SRC:.s=.o))
 
 TMP = .tmp/
 
@@ -16,9 +16,9 @@ dir:
 	mkdir -p ${TMP}
 
 main: all
-	gcc -shared -m64 -o compile ${NAME} main.c -L. -lasm  
+	cc  -o compile ${NAME} main.c -L. -lasm  
 
-$(TMP)%.o: %.asm
+$(TMP)%.o: %.s
 	$(CC) $< -o $@
 # @printf "$(CL_LINE)$(YELLOW)Compiling... $(END)$(patsubst $(TMP)%,%,$@)\n"
 

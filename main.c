@@ -9,23 +9,23 @@ extern int ft_strcmp(char *c, char *s);
 extern size_t ft_write(int ,char *, int);
 extern size_t ft_read(int ,char *, int);
 extern char *ft_strcpy(char *c, char *s);
-extern char *ft_strdup(char *c);
+// extern char *ft_strdup(char *c);
 
 int main() {
+    printf("BASURA: %d\n", '\xff');
     char str[] = "Holiwis";
     printf("================= STRLEN ==================\n");
     int i = strlen(str);
     int j = ft_strlen(str);
     printf("\tORIGINAL: %d || ASM: %d\n", i, j);
-
     printf("================= STRCMP ==================\n");
     printf("/---------- Holiwis - Holiwiaaa ----------\\\n");
-    i = strcmp(str, "Holiwiaaa");
-    j = ft_strcmp(str, "Holiwiaaa");
+    i = strcmp("ac", "asdf");
+    j = ft_strcmp("", "asdf");
     printf("\tORIGINAL: %d || ASM: %d\n", i, j);
     printf("/-------------- Holiwis - H --------------\\\n");
-    i = strcmp(str, "H");
-    j = ft_strcmp(str, "H");
+    i = strcmp("\xff\xff", "\xff");
+    j = ft_strcmp("\xff\xff", "\xff");
     printf("\tORIGINAL: %d || ASM: %d\n", i, j);
     printf("/-------------- Holiwis -   --------------\\\n");
     i = strcmp(str, "");
@@ -53,13 +53,13 @@ int main() {
     printf("\tTMP: %s || EX: %s\n", tmp, ex);
     ex1 = ft_strcpy(tmp1, "Holiwiaaa");
     printf("\tTMP: %s || EX: %s\n", tmp1, ex1);
-    printf("================= STRDUP ==================\n");
-    char src[] = "HOLIWIS";
-    char *mall;
-    char *mall1;
-    mall = strdup(src);
-    printf("\tmall: %s || src: %s\n", mall, src);
-    mall1 = ft_strdup(src);
-    printf("\tmall: %s || src: %s\n", mall1, src);
+    // printf("================= STRDUP ==================\n");
+    // char src[] = "HOLIWIS";
+    // char *mall;
+    // char *mall1;
+    // mall = strdup(src);
+    // printf("\tmall: %s || src: %s\n", mall, src);
+    // mall1 = ft_strdup(src);
+    // printf("\tmall: %s || src: %s\n", mall1, src);
     return 0;
 }
