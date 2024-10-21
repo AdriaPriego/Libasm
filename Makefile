@@ -9,16 +9,19 @@ OBJ = $(addprefix $(TMP),$(SRC:.s=.o))
 
 TMP = .tmp/
 
-all: dir ${OBJ}
+all: ${NAME}
+
+$(NAME): ${TMP} ${OBJ}
 	${LIB} ${NAME} ${OBJ}
 	ranlib ${NAME}
-dir:
+
+$(TMP):
 	mkdir -p ${TMP}
 
 main: all
 	cc  -o compile ${NAME} main.c -L. -lasm  
 
-$(TMP)%.o: %.s
+$(TMP)%.o: %.s Makefile
 	$(CC) $< -o $@
 # @printf "$(CL_LINE)$(YELLOW)Compiling... $(END)$(patsubst $(TMP)%,%,$@)\n"
 
